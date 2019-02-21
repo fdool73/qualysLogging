@@ -28,7 +28,7 @@ logExport = session.get('https://qualysapi.qg3.apps.qualys.com/api/2.0/fo/activi
 def lambda_handler(event, context):
     client = boto3.client('firehose', region_name='us-east-1')
     response=client.put_record(
-        DeliveryStreamName='qualysLogs',
+        DeliveryStreamName='streamName',
         Record={
             'Data': logExport.text
         }
