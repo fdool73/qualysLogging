@@ -10,11 +10,11 @@ logger.setLevel(logging.INFO)
 def lambda_handler(event, context):
     client = boto3.client('firehose', region_name='us-east-1')
     response=client.create_delivery_stream(
-        DeliveryStreamName='qualysLogs',
+        DeliveryStreamName='streamName',
         DeliveryStreamType='DirectPut',
         ExtendedS3DestinationConfiguration={
-            'RoleARN': 'arn:aws:iam::137453691370:role/qualysFirehose',
-            'BucketARN': 'arn:aws:s3:::qualys-logs-export',
+            'RoleARN': 'arn',
+            'BucketARN': 'arn',
             'Prefix': 'qualysLog/',
             'ProcessingConfiguration': {
             'Enabled': True,
@@ -24,7 +24,7 @@ def lambda_handler(event, context):
                     'Parameters': [
                         {
                             'ParameterName': 'LambdaArn',
-                            'ParameterValue': 'arn:aws:lambda:us-east-1:137453691370:function:qualysLogTransformSyslogToCsv'
+                            'ParameterValue': 'arn'
                         },
                     ]
                 },
