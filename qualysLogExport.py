@@ -14,8 +14,8 @@ import time
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-username = "cscsy3fd"
-password = "Gotohellqualys1!"
+username = "SECRET"
+password = "SECRET"
 
 headers = {
     'X-Requested-With':'Qualys API Test',
@@ -39,8 +39,8 @@ def lambda_handler(event, context):
         DeliveryStreamName='qualysLogs',
         DeliveryStreamType='DirectPut',
         ExtendedS3DestinationConfiguration={
-            'RoleARN': 'arn:aws:iam::137453691370:role/qualysFirehose',
-            'BucketARN': 'arn:aws:s3:::qualys-logs-export',
+            'RoleARN': 'arn',
+            'BucketARN': 'arn:aws:s3:::bucketname',
             'Prefix': 'qualysLog/',
             'ProcessingConfiguration': {
             'Enabled': True,
@@ -50,7 +50,7 @@ def lambda_handler(event, context):
                     'Parameters': [
                         {
                             'ParameterName': 'LambdaArn',
-                            'ParameterValue': 'arn:aws:lambda:us-east-1:137453691370:function:qualysLogTransformSyslogToCsv'
+                            'ParameterValue': 'arn'
                         },
                     ]
                 },
